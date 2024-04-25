@@ -1,0 +1,22 @@
+name: 'Pixee'
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, reopened, synchronize]
+
+jobs:
+  auto_pr_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensures all branches are fetched
+
+      - name: Run Python script to create PR
+        run: |
+          export
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
