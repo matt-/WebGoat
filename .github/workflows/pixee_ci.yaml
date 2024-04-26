@@ -9,8 +9,8 @@ on:
 jobs:
   auto_pr_job:
     runs-on: ubuntu-latest
-    container:
-      image: pixeematt/ci-test
+    #container:
+    #  image: pixeematt/ci-test
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,7 +18,6 @@ jobs:
           fetch-depth: 0  # Ensures all branches are fetched
 
       - name: Run Python script to create PR
-        run: |
-          pixee --version
+        uses: docker://pixeematt/ci-test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
