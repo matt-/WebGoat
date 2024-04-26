@@ -7,14 +7,16 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  auto_pr_job:
-    runs-on: pixeematt/ci-test
+  pixee_fix:
+    runs-on: ubuntu-latest
     steps:
+      - name: Run the build process with Docker
+        uses: docker://pixeematt/ci-test
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Ensures all branches are fetched
-
+          
       - name: Run Python script to create PR
         run: |
           export
