@@ -7,26 +7,15 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  auto_pr_job:
+  pixee_fix:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
       contents: write
-    #container:
-    #  image: pixeematt/ci-test
-    steps:
-
-      - name: Print GitHub context
-        run: echo "${{ toJSON(github) }}"
-      
+    steps:      
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Ensures all branches are fetched
-
       - name: Run Python script to create PR
         uses: docker://pixeematt/ci-test
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-
-      
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
