@@ -9,9 +9,15 @@ on:
 jobs:
   auto_pr_job:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     #container:
     #  image: pixeematt/ci-test
     steps:
+
+      - name: Print GitHub context
+        run: echo "${{ toJSON(github) }}"
+      
       - name: Checkout code
         uses: actions/checkout@v3
         with:
@@ -21,3 +27,5 @@ jobs:
         uses: docker://pixeematt/ci-test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+
+      
