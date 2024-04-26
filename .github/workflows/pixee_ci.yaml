@@ -8,7 +8,9 @@ on:
 
 jobs:
   auto_pr_job:
-    runs-on: pixeematt/ci-test
+    runs-on: ubuntu-latest
+    container:
+      image: pixeematt/ci-test
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
