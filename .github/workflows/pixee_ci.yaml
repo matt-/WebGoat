@@ -16,6 +16,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Run Python script to create PR
-        uses: docker://pixeematt/ci-test
+        uses: docker://codemodder/ci-integrations
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
